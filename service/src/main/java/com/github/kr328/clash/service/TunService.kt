@@ -207,7 +207,7 @@ class TunService : VpnService(), CoroutineScope by CoroutineScope(Dispatchers.De
             TunModule.TunDevice(
                 fd = establish()?.detachFd()
                     ?: throw NullPointerException("Establish VPN rejected by system"),
-                gateway = TUN_GATEWAY,
+                gateway = "$TUN_GATEWAY/$TUN_SUBNET_PREFIX",
                 portal = TUN_PORTAL,
                 dns = if (store.dnsHijacking) NET_ANY else TUN_DNS,
             )
@@ -223,7 +223,6 @@ class TunService : VpnService(), CoroutineScope by CoroutineScope(Dispatchers.De
         private const val TUN_PORTAL = "172.19.0.2"
         private const val TUN_DNS = TUN_PORTAL
         private const val NET_ANY = "0.0.0.0"
-        private const val NET_SUBNET_LOOPBACK = "127.0.0.0/8"
 
         private val HTTP_PROXY_LOCAL_LIST: List<String> = listOf(
             "localhost",
@@ -239,6 +238,11 @@ class TunService : VpnService(), CoroutineScope by CoroutineScope(Dispatchers.De
             "172.31.*",
             "192.168.*"
         )
-        private val HTTP_PROXY_BLACK_LIST: List<String> = listOf("*zhihu.com", "*zhimg.com")
+        private val HTTP_PROXY_BLACK_LIST: List<String> = listOf(
+            "*zhihu.com",
+            "*zhimg.com",
+            "*jd.com",
+            "100ime-iat-api.xfyun.cn",
+        )
     }
 }

@@ -4,8 +4,8 @@ var (
 	defaultNameServers = []string{
 		"223.5.5.5",
 		"119.29.29.29",
-		"8.8.8.8",
-		"1.1.1.1",
+		"8.8.4.4",
+		"1.0.0.1",
 	}
 	defaultFakeIPFilter = []string{
 		// Stun Services
@@ -17,22 +17,25 @@ var (
 		// Google Voices
 		"lens.l.google.com",
 
-		// Nintendo Switch
+		// Nintendo Switch STUN
 		"*.n.n.srv.nintendo.net",
 
-		// PlayStation
+		// PlayStation STUN
 		"+.stun.playstation.net",
 
 		// XBox
 		"xbox.*.*.microsoft.com",
 		"*.*.xboxlive.com",
 
-		// Microsoft
+		// Microsoft Captive Portal
 		"*.msftncsi.com",
 		"*.msftconnecttest.com",
 
 		// Bilibili CDN
 		"*.mcdn.bilivideo.cn",
+
+		// Windows Default LAN WorkGroup
+		"WORKGROUP",
 	}
 	defaultFakeIPRange = "28.0.0.0/8"
 )
